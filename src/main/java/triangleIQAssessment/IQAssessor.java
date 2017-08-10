@@ -6,18 +6,7 @@ public class IQAssessor {
 		Board board = new Board();
 		
 		board.printBoard();
-		
-		board.removePeg(15);
-		
-		board.printBoard();
-		
-		board.removePeg(8);
-		
-		board.printBoard();
-		
-		board.addPeg(15);
-		
-		board.printBoard();
+		board.
 	}
 
 }
