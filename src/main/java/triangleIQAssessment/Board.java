@@ -1,6 +1,7 @@
 package triangleIQAssessment;
 
 import java.util.HashSet;
+import java.util.Iterator;
 import java.util.Set;
 
 public class Board {
@@ -84,8 +85,8 @@ public class Board {
 	}
 
 	public boolean moveIsPossible(Moves move) {
-		return boardPosition[move.getStartingPoint()-1]=='X' && boardPosition[move.getMiddlePoint()-1] =='X'
-				&& boardPosition[move.getEndingPoint()-1]=='O';
+		return boardPosition[move.getStartingPoint() - 1] == 'X' && boardPosition[move.getMiddlePoint() - 1] == 'X'
+				&& boardPosition[move.getEndingPoint() - 1] == 'O';
 	}
 
 	public void makeMove(int startingPoint, int middlePoint, int endingPoint) {
@@ -97,4 +98,15 @@ public class Board {
 		} else
 			System.out.println("That move is not possible.");
 	}
+
+	public boolean gameIsOver() {
+		Iterator<Moves> it = legalMoves.iterator();
+		while (it.hasNext()) {
+			if (moveIsPossible(it.next())) {
+				return false;
+				}
+		}
+		return true;
+	}
+
 }
