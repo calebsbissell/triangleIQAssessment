@@ -5,8 +5,8 @@ import java.util.Iterator;
 import java.util.Set;
 
 public class Board {
-	private char[] boardPosition = new char[15];
-	private Set<Moves> legalMoves = new HashSet<Moves>();
+	protected char[] boardPosition = new char[15];
+	protected Set<Moves> legalMoves = new HashSet<Moves>();
 
 	public Board() {
 		boardPosition[0] = 'O';
@@ -30,8 +30,8 @@ public class Board {
 		legalMoves.add(new Moves(13, 14, 15));
 		legalMoves.add(new Moves(14, 9, 5));
 		legalMoves.add(new Moves(5, 9, 14));
-		legalMoves.add(new Moves(12, 9, 6));
-		legalMoves.add(new Moves(6, 9, 12));
+		legalMoves.add(new Moves(13, 9, 6));
+		legalMoves.add(new Moves(6, 9, 13));
 		legalMoves.add(new Moves(8, 9, 10));
 		legalMoves.add(new Moves(10, 9, 8));
 		legalMoves.add(new Moves(12, 8, 5));
