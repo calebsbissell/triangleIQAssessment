@@ -34,4 +34,34 @@ public class Moves {
 		this.middlePoint = middlePoint;
 	}
 
+	
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + endingPoint;
+		result = prime * result + middlePoint;
+		result = prime * result + startingPoint;
+		return result;
+	}
+
+	
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Moves other = (Moves) obj;
+		if (endingPoint != other.endingPoint)
+			return false;
+		if (middlePoint != other.middlePoint)
+			return false;
+		if (startingPoint != other.startingPoint)
+			return false;
+		return true;
+	}
+
 }

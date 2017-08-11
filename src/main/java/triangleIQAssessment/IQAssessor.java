@@ -6,7 +6,11 @@ public class IQAssessor {
 		Board board = new Board();
 		
 		board.printBoard();
-		board.
+		board.makeMove(4, 2, 1);
+		board.printBoard();
+		board.makeMove(9, 5, 2);
+		board.printBoard();
+		board.makeMove(4, 2, 1);
 	}
 
 }

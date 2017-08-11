@@ -5,14 +5,10 @@ import java.util.Set;
 
 public class Board {
 	private char[] boardPosition = new char[15];
-	Set<Moves> legalMoves = new HashSet<Moves>();
+	private Set<Moves> legalMoves = new HashSet<Moves>();
 
 	public Board() {
 		boardPosition[0] = 'O';
-		for (int i = 1; i < 15; i++) {
-			boardPosition[i] = 'X';
-		}
-
 		legalMoves.add(new Moves(1, 2, 4));
 		legalMoves.add(new Moves(4, 2, 1));
 		legalMoves.add(new Moves(1, 3, 6));
@@ -44,11 +40,14 @@ public class Board {
 		legalMoves.add(new Moves(7, 8, 9));
 		legalMoves.add(new Moves(9, 8, 7));
 		legalMoves.add(new Moves(2, 5, 9));
-		legalMoves.add(new Moves(2, 5, 9));
+		legalMoves.add(new Moves(9, 5, 2));
 		legalMoves.add(new Moves(3, 5, 8));
 		legalMoves.add(new Moves(8, 5, 3));
 		legalMoves.add(new Moves(4, 5, 6));
 		legalMoves.add(new Moves(6, 5, 4));
+		for (int i = 1; i < 15; i++) {
+			boardPosition[i] = 'X';
+		}
 
 	}
 
@@ -72,21 +71,21 @@ public class Board {
 
 	}
 
-	private void removePeg(int position) {
+	public void removePeg(int position) {
 		boardPosition[position - 1] = 'O';
 	}
 
-	private void addPeg(int position) {
+	public void addPeg(int position) {
 		boardPosition[position - 1] = 'X';
 	}
 
-	private boolean moveExists(Moves move) {
+	public boolean moveExists(Moves move) {
 		return legalMoves.contains(move);
 	}
 
-	private boolean moveIsPossible(Moves move) {
-		return boardPosition[move.getStartingPoint()] == 'X' && boardPosition[move.getMiddlePoint()] == 'X'
-				&& boardPosition[move.getEndingPoint()] == 'O';
+	public boolean moveIsPossible(Moves move) {
+		return boardPosition[move.getStartingPoint()-1]=='X' && boardPosition[move.getMiddlePoint()-1] =='X'
+				&& boardPosition[move.getEndingPoint()-1]=='O';
 	}
 
 	public void makeMove(int startingPoint, int middlePoint, int endingPoint) {
@@ -95,7 +94,7 @@ public class Board {
 			this.removePeg(startingPoint);
 			this.removePeg(middlePoint);
 			this.addPeg(endingPoint);
-		}
-		else System.out.println("That move is not possible.");
+		} else
+			System.out.println("That move is not possible.");
 	}
 }
