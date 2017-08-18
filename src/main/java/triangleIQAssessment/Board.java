@@ -55,15 +55,16 @@ public class Board {
 	}
 
 	public void printBoard() {
-	/*	System.out.println("Board positions are numbered roughly as follows:");
-		System.out.println("     1    ");
-		System.out.println("    2 3   ");
-		System.out.println("   4 5 6  ");
-		System.out.println("  7 8 9 10 ");
-		System.out.println("11 12 13 14 15");
-		System.out.println();
-		System.out.println("An 'X' indicates a peg and an 'O' indicates an empty space:");
-		System.out.println(); */
+		/*
+		 * System.out.println("Board positions are numbered roughly as follows:"
+		 * ); System.out.println("     1    ");
+		 * System.out.println("    2 3   "); System.out.println("   4 5 6  ");
+		 * System.out.println("  7 8 9 10 ");
+		 * System.out.println("11 12 13 14 15"); System.out.println();
+		 * System.out.
+		 * println("An 'X' indicates a peg and an 'O' indicates an empty space:"
+		 * ); System.out.println();
+		 */
 		System.out.println("    " + boardPosition[0] + "    ");
 		System.out.println("   " + boardPosition[1] + " " + boardPosition[2] + "   ");
 		System.out.println("  " + boardPosition[3] + " " + boardPosition[4] + " " + boardPosition[5] + "  ");
@@ -90,15 +91,14 @@ public class Board {
 		return boardPosition[move.getStartingPoint() - 1] == 'X' && boardPosition[move.getMiddlePoint() - 1] == 'X'
 				&& boardPosition[move.getEndingPoint() - 1] == 'O';
 	}
-	
 
 	public void makeMove(Moves move) {
 		if (moveExists(move) && moveIsPossible(move)) {
 			this.removePeg(move.getStartingPoint());
 			this.removePeg(move.getMiddlePoint());
 			this.addPeg(move.getEndingPoint());
-		} //else
-			//System.out.println("That move is not possible.");
+		}
+
 	}
 
 	public boolean gameIsOver() {
@@ -106,9 +106,27 @@ public class Board {
 		while (it.hasNext()) {
 			if (moveIsPossible(it.next())) {
 				return false;
-				}
+			}
 		}
 		return true;
 	}
 
+	public boolean gameIsWon() {
+		int i = 0;
+		for (char temp : boardPosition) {
+			if (temp == 'X') {
+				i++;
+			}
+		}
+		if (i > 1) {
+			return false;
+		} else
+			return true;
+	}
+	public void boardReset() {
+		boardPosition[0] = 'O';
+		for (int i = 1; i < 15; i++) {
+			boardPosition[i] = 'X';
+		}
+	}
 }

@@ -13,11 +13,11 @@ public class IQAssessor {
 		board.printBoard();
 		board.makeMove(new Moves(4, 2, 1));
 		System.out.println(board.gameIsOver());
-		for (int i=1; i<=1;i++) {
+		for (int i=1; i<=13;i++) {
 		board.removePeg(i);
 		}
 		board.printBoard();
-		System.out.println(board.gameIsOver());
+		System.out.println(board.gameIsWon());
 		
 
 		}
