@@ -1,19 +1,22 @@
 package triangleIQAssessment;
 
+import java.util.Random;
+
 public class GameSolver {
 
 	public static void main(String[] args) {
 		Board board = new Board();
-		int moveCounter = 1;
-		while (moveCounter < 2) {
-			for (Moves temp : board.legalMoves) {
-				board.makeMove(temp.getStartingPoint(), temp.getMiddlePoint(), temp.getEndingPoint());
-				board.printBoard();
-				if (board.moveIsPossible(temp)) {
-						moveCounter++;
-				}
-			}
+		Random random =new Random();
+		Moves move;
+		while (!board.gameIsOver()) {
+			int number =random.nextInt(36);
+			System.out.println(board.legalMoves.get(number).getStartingPoint()+" "+board.legalMoves.get(number).getEndingPoint());
+			
+			move= board.legalMoves.get(number);
+			board.makeMove(move);
+			board.printBoard();
 		}
+		System.out.println("The game is finished.");
 	}
 
 }

@@ -1,12 +1,14 @@
 package triangleIQAssessment;
 
+import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Iterator;
+import java.util.List;
 import java.util.Set;
 
 public class Board {
 	protected char[] boardPosition = new char[15];
-	protected Set<Moves> legalMoves = new HashSet<Moves>();
+	protected List<Moves> legalMoves = new ArrayList<Moves>();
 
 	public Board() {
 		boardPosition[0] = 'O';
@@ -53,7 +55,7 @@ public class Board {
 	}
 
 	public void printBoard() {
-		System.out.println("Board positions are numbered roughly as follows:");
+	/*	System.out.println("Board positions are numbered roughly as follows:");
 		System.out.println("     1    ");
 		System.out.println("    2 3   ");
 		System.out.println("   4 5 6  ");
@@ -61,7 +63,7 @@ public class Board {
 		System.out.println("11 12 13 14 15");
 		System.out.println();
 		System.out.println("An 'X' indicates a peg and an 'O' indicates an empty space:");
-		System.out.println();
+		System.out.println(); */
 		System.out.println("    " + boardPosition[0] + "    ");
 		System.out.println("   " + boardPosition[1] + " " + boardPosition[2] + "   ");
 		System.out.println("  " + boardPosition[3] + " " + boardPosition[4] + " " + boardPosition[5] + "  ");
@@ -88,15 +90,15 @@ public class Board {
 		return boardPosition[move.getStartingPoint() - 1] == 'X' && boardPosition[move.getMiddlePoint() - 1] == 'X'
 				&& boardPosition[move.getEndingPoint() - 1] == 'O';
 	}
+	
 
-	public void makeMove(int startingPoint, int middlePoint, int endingPoint) {
-		Moves move = new Moves(startingPoint, middlePoint, endingPoint);
+	public void makeMove(Moves move) {
 		if (moveExists(move) && moveIsPossible(move)) {
-			this.removePeg(startingPoint);
-			this.removePeg(middlePoint);
-			this.addPeg(endingPoint);
-		} else
-			System.out.println("That move is not possible.");
+			this.removePeg(move.getStartingPoint());
+			this.removePeg(move.getMiddlePoint());
+			this.addPeg(move.getEndingPoint());
+		} //else
+			//System.out.println("That move is not possible.");
 	}
 
 	public boolean gameIsOver() {

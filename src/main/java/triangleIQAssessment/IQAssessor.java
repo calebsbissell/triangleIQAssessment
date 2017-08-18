@@ -1,22 +1,21 @@
 package triangleIQAssessment;
 
-import java.util.Iterator;
 
 public class IQAssessor {
 
 	public static void main(String[] args) {
 		Board board = new Board();
-		/*
+	
 		board.printBoard();
-		board.makeMove(4, 2, 1);
+		board.makeMove(new Moves(4, 2, 1));
 		board.printBoard();
-		board.makeMove(9, 5, 2);
+		board.makeMove(new Moves(9, 5, 2));
 		board.printBoard();
-		board.makeMove(4, 2, 1);
+		board.makeMove(new Moves(4, 2, 1));
 		System.out.println(board.gameIsOver());
-		for (int i=1; i<=14;i++) {
+		for (int i=1; i<=1;i++) {
 		board.removePeg(i);
-		} */
+		}
 		board.printBoard();
 		System.out.println(board.gameIsOver());
 		
@@ -24,4 +23,4 @@ public class IQAssessor {
 		}
 	}
 
-}
+
