@@ -1,10 +1,10 @@
 package triangleIQAssessment;
 
 import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
-import java.util.Set;
+import java.util.Random;
+
 
 public class Board {
 	protected char[] boardPosition = new char[15];
@@ -123,10 +123,32 @@ public class Board {
 		} else
 			return true;
 	}
+
 	public void boardReset() {
 		boardPosition[0] = 'O';
 		for (int i = 1; i < 15; i++) {
 			boardPosition[i] = 'X';
 		}
 	}
+	public void solveBoard() {
+		boolean firstMoveWasPossible = false;
+		Random random = new Random();
+		int index = random.nextInt(36);
+		if (moveIsPossible(this.legalMoves.get(index))) {
+			this.makeMove(this.legalMoves.get(index));
+			this.printBoard();
+			firstMoveWasPossible = true;
+		}
+		if (firstMoveWasPossible && moveIsPossible(this.legalMoves.get(random.nextInt(36)))) {
+			this.solveBoard();
+		} else if (this.gameIsWon()) {
+			System.out.println("Game is won.");
+		} else {
+			this.boardReset();
+			this.solveBoard();
+		}
+				
+	}
+
+
 }
