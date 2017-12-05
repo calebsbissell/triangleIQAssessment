@@ -12,7 +12,7 @@ public class IQAssessor {
 		board.printBoard();
 		board.makeMove(4, 2, 1);
 		System.out.println(board.gameIsOver());
-		for (int i=1; i<=13;i++) {
+		for (int i=1; i<=14;i++) {
 		board.removePeg(i);
 		}
 		board.printBoard();
